@@ -1,5 +1,6 @@
 import sqlite3
 
+
 def create_test_database(db_name="test.db"):
     # Create a new database connection and cursor
     conn = sqlite3.connect(db_name)
@@ -13,7 +14,7 @@ def create_test_database(db_name="test.db"):
     # Insert data without committing
     cursor.execute("INSERT INTO test_table (data) VALUES ('Uncommitted data')")
     print("Data inserted, but not committed.")
-    
+
     # Attempt to read the uncommitted data in a new connection
     print("Attempting to read uncommitted data...")
     try:
@@ -21,7 +22,7 @@ def create_test_database(db_name="test.db"):
         cursor2 = conn2.cursor()
         cursor2.execute("SELECT * FROM test_table")
         rows = cursor2.fetchall()
-        
+
         if rows:
             print("Read succeeded. Retrieved rows:", rows)
         else:
@@ -32,5 +33,6 @@ def create_test_database(db_name="test.db"):
         # Cleanup both connections
         conn.close()
         conn2.close()
+
 
 create_test_database()
