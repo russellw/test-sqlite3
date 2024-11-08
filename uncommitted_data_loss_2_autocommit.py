@@ -3,7 +3,7 @@ import sqlite3
 
 def demonstrate_uncommitted_data_loss(db_name="test.db"):
     # Step 1: Insert data without committing, then close connection
-    #autocommit means this now works
+    # autocommit means this now works
     conn = sqlite3.connect(db_name, autocommit=True)
     cursor = conn.cursor()
 
